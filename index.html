@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Selamat Datang di TechLaptop</title>
+    <link rel="stylesheet" href="./frontend/src/output.css" />
+    <style>
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 50%, #1e3a8a 100%);
+            min-height: 100vh;
+        }
+
+        .btn-primary {
+            background-color: white;
+            color: #1e40af;
+            padding: 0.75rem 2rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            display: inline-block;
+            min-width: 180px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+
+<body class="gradient-bg flex flex-col items-center justify-center p-4 text-white font-sans">
+
+    <div class="text-center animate-fade-in w-full max-w-md">
+        <!-- Ikon Laptop -->
+        <div class="mb-8 p-4 inline-block rounded-full bg-white/10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-blue-200" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                    d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+        </div>
+
+        <!-- Judul -->
+        <h1 class="text-3xl md:text-4xl font-bold mb-4 text-white">
+            Selamat Datang di <span class="text-blue-200">TechLaptop</span>
+        </h1>
+
+        <!-- Deskripsi -->
+        <p class="text-blue-100 mb-8 text-lg">
+            Temukan laptop gaming terbaik dengan performa maksimal
+        </p>
+
+        <!-- Tombol yang sudah diperbaiki -->
+        <div class="mt-6">
+            <a href="./frontend/public/login.html" class="btn-primary">
+                Masuk Sekarang
+            </a>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('.animate-fade-in').style.animation = 'fadeIn 1s ease-in-out forwards';
+    </script>
+</body>
+
+</html>

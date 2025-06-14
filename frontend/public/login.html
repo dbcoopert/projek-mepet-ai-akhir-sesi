@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Registrasi</title>
+    <link rel="stylesheet" href="../src/output.css">
+</head>
+
+<body class="bg-blue-200 min-h-screen flex items-center justify-center">
+    <div class="container mx-auto max-w-md shadow-xl shadow-gray-500">
+        <div id="login-container" class="max-w-md w-full bg-white rounded-lg shadow-md overflow-hidden p-8">
+            <h1 class="text-2xl font-bold text-center text-gray-800 mb-6">Login</h1>
+
+            <!-- form -->
+            <form id="login-form" class="space-y-4">
+                <!-- username -->
+                <div>
+                    <label for="login-username" class="block text-sm font-medium text-gray-700">Username</label>
+                    <input type="text" id="login-username" required
+                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                </div>
+
+                <!-- password -->
+                <div>
+                    <label for="login-password" class="block text-sm font-medium text-gray-700">Password</label>
+                    <input type="password" id="login-password" required
+                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                </div>
+
+                <!-- submit -->
+                <div>
+                    <button type="submit"
+                        class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                        Login
+                    </button>
+                </div>
+            </form>
+
+            <div class="mt-4 text-center">
+                <p class="text-sm text-gray-600">Belum punya akun?
+                    <button id="show-register" class="font-medium text-blue-600 hover:text-blue-500">
+                        Daftar
+                    </button>
+                </p>
+            </div>
+        </div>
+
+        <div id="register-container" class="max-w-md w-full bg-white rounded-lg shadow-md overflow-hidden p-8 hidden">
+            <h1 class="text-2xl font-bold text-center text-gray-800 mb-6">Registrasi</h1>
+
+            <form id="register-form" class="space-y-4">
+                <div>
+                    <label for="register-username" class="block text-sm font-medium text-gray-700">Username</label>
+                    <input type="text" id="register-username" required
+                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                </div>
+
+                <div>
+                    <label for="register-password" class="block text-sm font-medium text-gray-700">Password</label>
+                    <input type="password" id="register-password" required
+                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                </div>
+
+                <div>
+                    <label for="register-confirm-password" class="block text-sm font-medium text-gray-700">Konfirmasi
+                        Password</label>
+                    <input type="password" id="register-confirm-password" required
+                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                    <p id="password-error" class="mt-1 text-sm text-red-600 hidden">Password tidak sama!</p>
+                </div>
+
+                <div>
+                    <button type="submit"
+                        class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                        Daftar
+                    </button>
+                </div>
+            </form>
+
+            <div class="mt-4 text-center">
+                <p class="text-sm text-gray-600">Sudah punya akun?
+                    <button id="show-login" class="font-medium text-blue-600 hover:text-blue-500">
+                        Login
+                    </button>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // DOM Elements
+        const loginContainer = document.getElementById('login-container');
+        const registerContainer = document.getElementById('register-container');
+        const showRegisterBtn = document.getElementById('show-register');
+        const showLoginBtn = document.getElementById('show-login');
+        const loginForm = document.getElementById('login-form');
+        const registerForm = document.getElementById('register-form');
+        const passwordError = document.getElementById('password-error');
+
+        // Toggle between login and register forms
+        showRegisterBtn.addEventListener('click', () => {
+            loginContainer.classList.add('hidden');
+            registerContainer.classList.remove('hidden');
+        });
+
+        showLoginBtn.addEventListener('click', () => {
+            registerContainer.classList.add('hidden');
+            loginContainer.classList.remove('hidden');
+        });
+
+        // Handle registration
+        registerForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const username = document.getElementById('register-username').value;
+            const password = document.getElementById('register-password').value;
+            const confirmPassword = document.getElementById('register-confirm-password').value;
+
+            // Validate password match
+            if (password !== confirmPassword) {
+                passwordError.classList.remove('hidden');
+                return;
+            }
+
+            passwordError.classList.add('hidden');
+
+            // Check if user already exists
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const userExists = users.some(user => user.username === username);
+
+            if (userExists) {
+                alert('Username sudah terdaftar!');
+                return;
+            }
+
+            // Save new user
+            users.push({ username, password });
+            localStorage.setItem('users', JSON.stringify(users));
+
+            alert('Registrasi berhasil! Silakan login.');
+            registerContainer.classList.add('hidden');
+            loginContainer.classList.remove('hidden');
+            registerForm.reset();
+        });
+
+        // Handle login
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const username = document.getElementById('login-username').value;
+            const password = document.getElementById('login-password').value;
+
+            // Check credentials
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const user = users.find(user => user.username === username && user.password === password);
+
+            if (user) {
+                // Redirect or do something after successful login
+                window.location.href = './welcome.html';
+            } else {
+                alert('Username atau password salah!');
+            }
+
+            loginForm.reset();
+        });
+    </script>
+</body>
+
+</html>

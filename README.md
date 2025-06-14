@@ -36,6 +36,14 @@ pip install flask flask-cors requests
 python app.py
 ```
 
-## 🔗 Link Dataset & Laporan Projek kelompok 4
+## 🔗 Link Dataset & Laporan Projek
 -  [Dataset](https://drive.google.com/file/d/1nRt5yCZQWZIpjVaIDrAJ7bQApFyfA_jb/view?usp=drive_link)
 -  [Laporan](https://drive.google.com/drive/folders/1q9LQcx2-VMbcL5QHKsVwbMBtpJZPeqrP)
+
+## Kelompok 4 TI23H:
+1. Asep Mardianto (20230040201)
+2. Raehan Pahlufi (20230040109)
+3. Ahmad Ghifari (20230040177)
+4. Muhammad Abdul aziz Iqbal (20230040122)
+5. Dwiki Syahrur (20230040170)
+6. Rivan Suntela (20230040285)

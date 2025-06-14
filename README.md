@@ -38,4 +38,4 @@ python app.py
 
 ## 🔗 Link Dataset & Laporan Projek kelompok 4
 -  [Dataset](https://drive.google.com/file/d/1nRt5yCZQWZIpjVaIDrAJ7bQApFyfA_jb/view?usp=drive_link)
--  [Laporan](https://drive.google.com/file/d/1nRt5yCZQWZIpjVaIDrAJ7bQApFyfA_jb/view?usp=sharing)
+-  [Laporan](https://drive.google.com/drive/folders/1q9LQcx2-VMbcL5QHKsVwbMBtpJZPeqrP)
